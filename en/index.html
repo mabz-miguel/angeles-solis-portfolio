@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ángeles Solís Parra — Senior Cultural Heritage Conservator-Restorer. 36+ years, National Award 2004, Europa Nostra Award 2005, Anjusil®.">
+  <title>Ángeles Solís Parra — Conservation Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/css/style.css?v=16">
+  <link rel="stylesheet" href="../assets/css/languages.css?v=1">
+  <script src="../assets/js/languages.js?v=1" defer></script>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════
+       NAVIGATION
+  ════════════════════════════════════════════ -->
+  <header class="site-nav" role="banner">
+    <a class="site-nav__brand" href="#" data-room="rp-home">Ángeles Solís Parra</a>
+    <div class="language-switch" role="group" aria-label="Language">
+      <a data-language="es" href="../index.html" lang="es" hreflang="es" aria-label="Español">ES</a>
+      <span aria-hidden="true">/</span>
+      <a data-language="en" href="index.html" lang="en" hreflang="en" aria-label="English" aria-current="true">EN</a>
+    </div>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav-menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav aria-label="Main navigation" id="site-nav-menu">
+      <ul role="list">
+        <li><a href="#" data-room="rp-vaciados">Sculpture</a></li>
+        <li><a href="#" data-room="rp-pintura">Painting</a></li>
+        <li><a href="#about">Profile</a></li>
+        <li><a href="#recognition">Recognition</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="complete-archive.html">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="nav-backdrop"></div>
+
+
+  <!-- ════════════════════════════════════════════
+       ROOM STAGE
+       Layers (back→front):
+         #stage-bg     static image
+         #stage-video  transition video
+         #stage-dark   dark overlay post-transition
+         .room-panel   content (one active at a time)
+  ════════════════════════════════════════════ -->
+  <div id="room-stage">
+
+    <img id="stage-bg" src="../assets/images/hall-hero.jpg" alt="" aria-hidden="true">
+    <video id="stage-video" muted playsinline preload="none" aria-hidden="true"></video>
+    <div id="stage-dark" aria-hidden="true"></div>
+
+
+    <!-- ── HALL / HOME ──────────────────────────── -->
+    <div class="room-panel is-active" id="rp-home"
+         data-bg="../assets/images/hall-hero.jpg">
+
+      <div class="rp-overlay"></div>
+      <div class="rp-content">
+
+        <div class="home-upper">
+
+          <div class="home-identity">
+            <p class="home-eyebrow">Conservation Portfolio · Madrid</p>
+            <h1 class="home-name">
+              <span>Ángeles</span>
+              <em>Solís Parra</em>
+            </h1>
+            <div class="home-role-rule" aria-hidden="true"></div>
+            <p class="home-role">Senior Cultural Heritage Conservator-Restorer</p>
+            <p class="home-desc">Specialising in sculpture, historic plaster casts and paintings. More than three decades devoted to the conservation, restoration and study of artistic and cultural heritage.</p>
+          </div>
+
+          <div class="home-enter-wrap">
+            <button class="room-nav room-nav--cta"
+              data-to="rp-vaciados"
+              data-video="../assets/videos/hall-to-sculpture.mp4"
+              data-reverse="false"
+              aria-label="Enter the Sculpture Gallery">
+              <span class="room-nav__stack">
+                <span class="room-nav__dest">Enter</span>
+                <span class="room-nav__name">Sculpture Gallery</span>
+              </span>
+              <span class="room-nav__arrow">→</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="home-stats">
+          <div class="home-stat">
+            <strong>36+</strong>
+            <span>Years of practice in the conservation, restoration and study of artistic and cultural heritage.</span>
+          </div>
+          <div class="home-stat">
+            <strong>2004</strong>
+            <span>National Award for the Conservation and Restoration of Cultural Heritage, Ministry of Culture</span>
+          </div>
+          <div class="home-stat">
+            <strong>2005</strong>
+            <span>Europa Nostra Award — recognition for the restoration of the RABASF historic plaster cast collection</span>
+          </div>
+          <div class="home-stat">
+            <strong>Key institutions</strong>
+            <span>Museo del Prado, RABASF, National Archaeological Museum, Royal Academy of Medicine, Pompeii</span>
+          </div>
+        </div>
+
+      </div><!-- /.rp-content -->
+
+      <!-- Enter nav button (bottom-right of home) -->
+      <button class="room-nav room-nav--right"
+        data-to="rp-vaciados"
+        data-video="../assets/videos/hall-to-sculpture.mp4"
+        data-reverse="false"
+        aria-label="Enter the Sculpture Gallery">
+        <span class="room-nav__dest">Enter</span>
+        <span class="room-nav__name">Sculpture</span>
+        <span class="room-nav__arrow">→</span>
+      </button>
+    </div>
+
+
+    <!-- ── VACIADOS ──────────────────────────────── -->
+    <div class="room-panel" id="rp-vaciados"
+         data-bg="../assets/images/sculpture-room.jpg">
+
+      <div class="rp-overlay"></div>
+      <div class="rp-content">
+
+        <div class="room__layout">
+
+          <div class="room__intro">
+            <p class="room__eyebrow">Gallery I</p>
+            <h2 class="room__title">Sculpture</h2>
+            <p class="room__subtitle">Historic plaster casts, sculpture collections and institutional heritage.</p>
+            <p class="room__text">An exploration of form, surface and restoration: restoring the presence of historic casts in institutional collections while preserving the traces of time.</p>
+          </div>
+
+          <div class="room__projects">
+            <a href="project-detail.html?id=vaciados-rabasf&from=vaciados" class="project-card">
+              <div class="project-card__img">
+                <img src="../assets/images/proj-vaciados-rabasf-hero.jpg" alt="RABASF plaster cast collection" loading="lazy">
+              </div>
+              <div class="project-card__body">
+                <span class="project-card__meta">Sculpture · 2001–2026</span>
+                <h3>Real Academia de Bellas Artes de San Fernando</h3>
+                <span class="project-card__link">Find out more</span>
+              </div>
+            </a>
+            <a href="project-detail.html?id=museo-reproducciones-madrid&from=vaciados" class="project-card">
+              <div class="project-card__img">
+                <img src="../assets/images/proj-mnra-hero.jpg" alt="Museum of Artistic Reproductions" loading="lazy">
+              </div>
+              <div class="project-card__body">
+                <span class="project-card__meta">Institutional · 2009–2011</span>
+                <h3>National Museum of Artistic Reproductions</h3>
+                <span class="project-card__link">Find out more</span>
+              </div>
+            </a>
+            <a href="project-detail.html?id=pompeya&from=vaciados" class="project-card">
+              <div class="project-card__img">
+                <img src="../assets/images/proj-pompeya-hero.jpg" alt="Pompeii" loading="lazy">
+              </div>
+              <div class="project-card__body">
+                <span class="project-card__meta">Archaeological · 2008 and 2011</span>
+                <h3>Pompeii</h3>
+                <span class="project-card__link">Find out more</span>
+              </div>
+            </a>
+            <a href="project-detail.html?id=museo-del-prado&from=vaciados" class="project-card">
+              <div class="project-card__img">
+                <img src="../assets/images/proj-prado-hero.jpg" alt="Museo del Prado" loading="lazy">
+              </div>
+              <div class="project-card__body">
+                <span class="project-card__meta">Sculpture · 1996–2001</span>
+                <h3>Museo Nacional del Prado</h3>
+                <span class="project-card__link">Find out more</span>
+              </div>
+            </a>
+          </div>
+
+        </div><!-- /.room__layout -->
+
+        <button class="room-nav room-nav--left"
+          data-to="rp-home"
+          data-video="../assets/videos/hall-to-sculpture.mp4"
+          data-reverse="true"
+          aria-label="Return to the Museum Hall">
+          <span class="room-nav__arrow">←</span>
+          <span class="room-nav__name">Museum Hall</span>
+          <span class="room-nav__dest">Back to</span>
+        </button>
+
+        <button class="room-nav room-nav--right"
+          data-to="rp-pintura"
+          data-video="../assets/videos/sculpture-to-painting.mp4"
+          data-reverse="false"
+          aria-label="Enter the Painting Gallery">
+          <span class="room-nav__dest">Enter</span>
+          <span class="room-nav__name">Painting Gallery</span>
+          <span class="room-nav__arrow">→</span>
+        </button>
+
+      </div><!-- /.rp-content -->
+    </div>
+
+
+    <!-- ── PINTURA ────────────────────────────────── -->
+    <div class="room-panel" id="rp-pintura"
+         data-bg="../assets/images/painting-room.jpg">
+
+      <div class="rp-overlay"></div>
+      <div class="rp-content">
+
+        <div class="room__layout">
+
+          <div class="room__intro">
+            <p class="room__eyebrow">Gallery II</p>
+            <h2 class="room__title">Painting</h2>
+            <p class="room__subtitle">Painting restoration, mural conservation and institutional collections.</p>
+            <p class="room__text">Caring for painted surfaces across the centuries — from Renaissance panels to mural ensembles, from private collections to national institutions.</p>
+          </div>
+
+          <div class="room__projects">
+            <a href="project-detail.html?id=pintura-rabasf&from=pintura" class="project-card">
+              <div class="project-card__img">
+                <img src="../assets/images/proj-pintura-rabasf-hero.jpg" alt="RABASF paintings" loading="lazy">
+              </div>
+              <div class="project-card__body">
+                <span class="project-card__meta">Painting · 2011–2015</span>
+                <h3>Real Academia de Bellas Artes de San Fernando</h3>
+                <span class="project-card__link">Find out more</span>
+              </div>
+            </a>
+            <a href="project-detail.html?id=museo-malaga&from=pintura" class="project-card">
+              <div class="project-card__img">
+                <img src="../assets/images/proj-malaga-hero.jpg" alt="Málaga Museum of Fine Arts" loading="lazy">
+              </div>
+              <div class="project-card__body">
+                <span class="project-card__meta">Painting · 2000–2003</span>
+                <h3>Málaga Museum of Fine Arts</h3>
+                <span class="project-card__link">Find out more</span>
+              </div>
+            </a>
+            <a href="project-detail.html?id=catedral-zamora&from=pintura" class="project-card">
+              <div class="project-card__img">
+                <img src="../assets/images/proj-zamora-hero.jpg" alt="Zamora Cathedral" loading="lazy">
+              </div>
+              <div class="project-card__body">
+                <span class="project-card__meta">Mural · 2009</span>
+                <h3>Cardinal’s Chapel, Zamora Cathedral</h3>
+                <span class="project-card__link">Find out more</span>
+              </div>
+            </a>
+            <a href="project-detail.html?id=museo-granada&from=pintura" class="project-card">
+              <div class="project-card__img">
+                <img src="../assets/images/proj-granada-hero.jpg" alt="Granada Museum of Fine Arts" loading="lazy">
+              </div>
+              <div class="project-card__body">
+                <span class="project-card__meta">Painting · 2003–2014</span>
+                <h3>Granada Museum of Fine Arts</h3>
+                <span class="project-card__link">Find out more</span>
+              </div>
+            </a>
+          </div>
+
+        </div><!-- /.room__layout -->
+
+        <a href="#about" class="room-continue">Keep exploring <span aria-hidden="true">↓</span></a>
+
+        <button class="room-nav room-nav--left"
+          data-to="rp-vaciados"
+          data-video="../assets/videos/sculpture-to-painting.mp4"
+          data-reverse="true"
+          aria-label="Back to Sculpture">
+          <span class="room-nav__arrow">←</span>
+          <span class="room-nav__name">Sculpture Gallery</span>
+          <span class="room-nav__dest">Back to</span>
+        </button>
+
+        <a href="complete-archive.html" class="room-nav room-nav--right" aria-label="View the Complete Archive">
+          <span class="room-nav__dest">View</span>
+          <span class="room-nav__name">Complete Archive</span>
+          <span class="room-nav__arrow">→</span>
+        </a>
+
+      </div><!-- /.rp-content -->
+    </div>
+
+  </div><!-- /#room-stage -->
+
+
+  <!-- ════════════════════════════════════════════
+       SCROLL SECTIONS
+  ════════════════════════════════════════════ -->
+
+  <!-- ABOUT -->
+  <section id="about" class="scroll-section scroll-section--warm" aria-labelledby="about-heading">
+    <div class="about__content">
+      <p class="s-eyebrow" data-reveal="0">Profile</p>
+      <h2 class="about__heading" id="about-heading" data-reveal="1">A practice shaped by a sensitivity to art and a commitment to its preservation over time.</h2>
+      <p class="about__body" data-reveal="2">Ángeles Solís Parra’s practice is best understood through more than three decades of professional experience: conserving and restoring sculpture, paintings and historic plaster casts, caring for institutional collections, and advancing research and the sharing of knowledge.</p>
+      <blockquote class="about__quote" data-reveal="3">
+        “Conservation means understanding a work in all its dimensions, so that every decision respects its history and safeguards its future.”
+      </blockquote>
+    </div>
+    <div class="about__photo" aria-hidden="true">
+      <img src="../assets/images/proj-sevilla-hero.jpg" alt="Ángeles Solís Parra working on a plaster cast, University of Seville">
+    </div>
+  </section>
+
+  <!-- RECOGNITION -->
+  <section id="recognition" class="scroll-section scroll-section--black" aria-labelledby="recognition-heading">
+    <div class="recognition__content">
+      <p class="s-eyebrow" data-reveal="0">Recognition</p>
+      <h2 class="recognition__heading" id="recognition-heading" data-reveal="1">Institutional recognition of a lifetime of professional practice.</h2>
+      <div class="recognition__grid">
+        <div class="recognition__item recognition__item--emphasis" data-reveal="1">
+          <p class="recognition__year-ghost">2004</p>
+          <p class="recognition__award">National Award for the Conservation and Restoration of Cultural Heritage</p>
+          <p class="recognition__inst">Ministry of Culture · Spain</p>
+        </div>
+        <div class="recognition__item recognition__item--emphasis" data-reveal="2">
+          <p class="recognition__year-ghost">2005</p>
+          <p class="recognition__award">Europa Nostra Award</p>
+          <p class="recognition__inst">Europa Nostra / European Commission</p>
+        </div>
+        <div class="recognition__item recognition__item--emphasis" data-reveal="3">
+          <p class="recognition__year-ghost">Prado</p>
+          <p class="recognition__award">Fundación Botín Scholarship at the Museo Nacional del Prado</p>
+          <p class="recognition__inst">Museo Nacional del Prado · Madrid</p>
+        </div>
+        <div class="recognition__item" data-reveal="4">
+          <p class="recognition__year-ghost">Anjusil®</p>
+          <p class="recognition__award">An original conservation methodology for historic plaster casts</p>
+          <p class="recognition__inst">Independent research · RABASF</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH / METHODOLOGY -->
+  <section id="research" class="scroll-section scroll-section--charcoal" aria-labelledby="research-heading">
+    <div class="research__content">
+      <div class="research__left">
+        <p class="s-eyebrow" data-reveal="0">Research and Methodology</p>
+        <h2 class="research__heading" id="research-heading" data-reveal="1">Knowledge grounded in conservation practice</h2>
+        <p class="research__body" data-reveal="2">The development of Anjusil®, alongside research and teaching, grows out of decades of professional practice dedicated to conserving and restoring historic plaster cast collections.</p>
+      </div>
+      <div class="research__items" data-reveal="2">
+        <div class="research__feature">
+          <span class="research__feature-label">Methodology</span>
+          <p class="research__feature-title">Anjusil® — A cleaning methodology for historic plaster casts</p>
+          <p class="research__feature-desc">Developed during the RABASF restoration project and subsequently used at the University of Seville and the MNRA. Associated with the National Award and Europa Nostra recognition.</p>
+        </div>
+        <div class="research__secondary">
+          <div class="research__item">
+            <span class="research__item-label">Research</span>
+            <p class="research__item-title">Material analysis and documentation of historic plaster casts</p>
+            <p class="research__item-desc">Development of diagnostic protocols and material testing methods for institutional collections in Spain and across Europe.</p>
+          </div>
+          <div class="research__item">
+            <span class="research__item-label">Teaching</span>
+            <p class="research__item-title">Conservation education and institutional training</p>
+            <p class="research__item-desc">Contributing to the training of conservation professionals through academic institutions and heritage organisations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications" class="scroll-section scroll-section--warm" aria-labelledby="publications-heading">
+    <div class="publications__content">
+      <p class="s-eyebrow" data-reveal="0">Publications</p>
+      <h2 class="publications__heading" id="publications-heading" data-reveal="1">Published contributions to conservation.</h2>
+      <p class="publications__body" data-reveal="2">A record of publications and written research associated with Ángeles Solís Parra’s conservation practice, drawn from her professional archive.</p>
+      <div class="publications__list" id="publications-list" data-reveal="2">
+        <div class="publications__item publications__item--pending">
+          <p class="publications__item-note">Publication list awaiting confirmation by Ángeles Solís Parra.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHIVE CTA -->
+  <section id="archive" class="scroll-section scroll-section--darker" aria-labelledby="archive-cta-heading">
+    <div class="archive__content">
+      <p class="archive__ghost-num" aria-hidden="true">17</p>
+      <h2 class="archive__heading" id="archive-cta-heading" data-reveal="1">Explore the full body of work</h2>
+      <p class="archive__body" data-reveal="2">A curated archive of institutional projects, sculpture, painting, archaeological heritage, private collections, research and teaching — more than three decades of conservation practice.</p>
+      <a href="complete-archive.html" class="btn-primary" data-reveal="3">
+        Complete Archive <span class="btn-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="scroll-section scroll-section--warm" aria-labelledby="contact-heading">
+    <div class="contact__content">
+      <div class="contact__left">
+        <p class="s-eyebrow" data-reveal="0">Contact</p>
+        <h2 class="contact__heading" id="contact-heading" data-reveal="1">Professional enquiries</h2>
+        <p class="contact__sub" data-reveal="2">For institutional projects, conservation consultancy, research collaboration or professional correspondence.</p>
+      </div>
+      <div class="contact__right">
+        <div class="contact__identity" data-reveal="2">
+          <p class="contact__name">Ángeles Solís Parra</p>
+          <p class="contact__role">Senior Cultural Heritage Conservator-Restorer · Madrid, Spain</p>
+        </div>
+        <div class="contact__links" data-reveal="3">
+          <a href="mailto:angsolis@gmail.com" class="contact__link">
+            <span class="contact__link-label">Email</span>
+            angsolis@gmail.com <span class="btn-arrow">→</span>
+          </a>
+          <a href="https://linkedin.com/in/angeles-solis" class="contact__link">
+            <span class="contact__link-label">LinkedIn</span>
+            linkedin.com/in/angeles-solis <span class="btn-arrow">→</span>
+          </a>
+          <a href="../assets/cv/angeles-solis-cv-en.pdf" target="_blank" rel="noopener" class="contact__link">
+            <span class="contact__link-label">CV</span>
+            View CV in English <span class="btn-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <script src="../assets/js/nav.js?v=1"></script>
+  <script src="../assets/js/transitions.js?v=2"></script>
+  <script src="../assets/js/main.js?v=6"></script>
+  <script src="../assets/js/micro.js?v=2"></script>
+  <script src="../assets/js/publications.js?v=3"></script>
+  <script>
+    // Restore room panel when returning from a project detail page (?room=vaciados|pintura)
+    const roomParam = new URLSearchParams(location.search).get('room');
+    if (roomParam) {
+      const panelId = roomParam === 'vaciados' ? 'rp-vaciados' : roomParam === 'pintura' ? 'rp-pintura' : null;
+      if (panelId) {
+        const target = document.getElementById(panelId);
+        const current = document.querySelector('.room-panel.is-active');
+        if (target && current && current !== target) {
+          current.classList.remove('is-active');
+          if (target.dataset.bg) document.getElementById('stage-bg').src = target.dataset.bg;
+          target.classList.add('is-active');
+        }
+        // Clean the URL without reloading
+        // Keep the room query and hash for language switching and sharing.
+      }
+    }
+  </script>
+</body>
+</html>

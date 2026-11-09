@@ -2135,7 +2135,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--f-s
    REDUCED MOTION
    ══════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
-  .room-panel, #stage-video, #stage-dark, #stage-bg,
+  .room-panel, #stage-video, #stage-dark, #stage-bg { transition: none !important; }
   .room-nav, [data-reveal], .archive-entry__thumb img,
   .project-card__img img,
   .home-identity, .home-enter-wrap, .home-stats,

@@ -56,11 +56,9 @@ function updateNavActive() {
 
   if (inStage) {
     const activePanel = document.querySelector('.room-panel.is-active');
-    const map = { 'rp-home': 'Hall', 'rp-vaciados': 'Escultura', 'rp-pintura': 'Pintura' };
-    const label = map[activePanel?.id];
-    if (label) {
-      navLinks.forEach(l => { if (l.textContent.trim() === label) l.classList.add('is-active'); });
-    }
+    navLinks.forEach(link => {
+      if (link.dataset.room === activePanel?.id) link.classList.add('is-active');
+    });
   } else {
     // "archive" has no #archive nav link — its menu item ("Obras") points
     // to complete-archive.html instead, so it needs its own href to match.

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The complete archive of conservation and restoration projects by Ángeles Solís Parra — sculpture, painting, archaeological heritage, private collections and research.">
+  <title>Complete Archive — Ángeles Solís Parra</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css?v=16">
+  <link rel="stylesheet" href="../assets/css/languages.css?v=1">
+  <script src="../assets/js/languages.js?v=1" defer></script>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="site-nav" role="banner">
+    <a class="site-nav__brand" href="index.html">Ángeles Solís Parra</a>
+    <div class="language-switch" role="group" aria-label="Language">
+      <a data-language="es" href="../complete-archive.html" lang="es" hreflang="es" aria-label="Español">ES</a>
+      <span aria-hidden="true">/</span>
+      <a data-language="en" href="complete-archive.html" lang="en" hreflang="en" aria-label="English" aria-current="true">EN</a>
+    </div>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav-menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav aria-label="Main navigation" id="site-nav-menu">
+      <ul role="list">
+        <li><a href="index.html?room=vaciados">Sculpture</a></li>
+        <li><a href="index.html?room=pintura">Painting</a></li>
+        <li><a href="index.html#about">Profile</a></li>
+        <li><a href="index.html#recognition">Recognition</a></li>
+        <li><a href="index.html#research">Research</a></li>
+        <li><a href="index.html#publications">Publications</a></li>
+        <li><a href="complete-archive.html" class="is-active" aria-current="page">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="nav-backdrop"></div>
+
+
+  <!-- HEADER -->
+  <header class="archive-header" aria-label="Archive header">
+    <p class="s-eyebrow">Complete Archive</p>
+    <h1 class="archive-header__title">The Work</h1>
+    <p class="archive-header__desc">A curated archive encompassing sculpture, painting, archaeological heritage, institutional and private collections, research and teaching — over 36 years of professional practice in Spain and Europe.</p>
+  </header>
+
+
+  <!-- FILTER BAR -->
+  <div class="archive-filters" role="group" aria-label="Filter by category">
+    <div class="archive-filters__scroll">
+      <button class="filter-btn is-active" data-filter="all" type="button">All</button>
+      <button class="filter-btn" data-filter="sculpture" type="button">Sculpture</button>
+      <button class="filter-btn" data-filter="painting" type="button">Painting</button>
+      <button class="filter-btn" data-filter="archaeological-mural" type="button">Archaeology and Murals</button>
+      <button class="filter-btn" data-filter="institutional-collections" type="button">Institutional</button>
+      <button class="filter-btn" data-filter="private-collections" type="button">Private</button>
+      <button class="filter-btn" data-filter="research-methodology" type="button">Research</button>
+      <button class="filter-btn" data-filter="awards-grants" type="button">Recognition</button>
+    </div>
+    <span class="archive-filters__count" id="archive-count" aria-live="polite"></span>
+  </div>
+
+
+  <!-- PROJECT GRID -->
+  <main>
+    <div class="archive-grid" id="archive-grid" aria-label="Project archive"></div>
+  </main>
+
+
+  <!-- NOTE -->
+  <section class="archive-note" aria-label="Archive note">
+    <div>
+      <p class="s-eyebrow">About this archive</p>
+      <h2 class="archive-note__heading">The work speaks through evidence.</h2>
+    </div>
+    <div>
+      <p class="archive-note__body">This archive is not intended to be exhaustive. It documents selected conservation projects that best represent the scope, methodology and institutional context of Ángeles Solís Parra’s practice over more than three decades.</p>
+      <p class="archive-note__body">For specific enquiries, further documentation or institutional proposals, please use the contact details on the home page.</p>
+      <a href="index.html#contact" class="btn-primary" style="margin-top:16px;">
+        Professional enquiries <span class="btn-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="archive-page-footer" role="contentinfo">
+    <span>Ángeles Solís Parra — Conservation Portfolio</span>
+    <nav aria-label="Footer navigation">
+      <ul role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="complete-archive.html">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </footer>
+
+
+  <script>
+    const CATEGORY_LABELS = {
+      'sculpture': 'Sculpture',
+      'painting': 'Painting',
+      'archaeological-mural': 'Archaeological',
+      'institutional-collections': 'Institutional',
+      'private-collections': 'Private',
+      'research-methodology': 'Research',
+      'awards-grants': 'Recognition'
+    };
+
+    function primaryCategory(cats) {
+      const order = ['research-methodology','awards-grants','archaeological-mural','private-collections','painting','institutional-collections','sculpture'];
+      for (const c of order) {
+        if (cats.includes(c)) return c;
+      }
+      return cats[0] || 'other';
+    }
+
+    // Europa Nostra date resolved 2026-09-02: the diploma (primary source)
+    // says 2005; the CV said 2006, confirmed to be a transcription error.
+    // Kept as a permanent guard so the retired "2006" figure can never
+    // resurface in rendered text.
+    function safeguardEuropaNostra(text) {
+      if (!text) return text;
+      return text
+        .replace(/Premio Europa Nostra\s*\(?2006\)?/gi, 'Premio Europa Nostra 2005')
+        .replace(/Europa Nostra\s*\(?2006\)?/gi, 'Europa Nostra 2005')
+        .replace(/\s{2,}/g, ' ')
+        .trim();
+    }
+
+    function safeguardYear(p) {
+      return p.year;
+    }
+
+    function buildCard(p) {
+      const cat   = primaryCategory(p.category);
+      const label = CATEGORY_LABELS[cat] || cat;
+      const instLine = [p.institution, p.location].filter(Boolean).join(' · ');
+      const title = safeguardEuropaNostra(p.title);
+      const desc  = safeguardEuropaNostra(p.shortDescription);
+      const a = document.createElement('a');
+      a.className = 'archive-entry';
+      a.href = `project-detail.html?id=${p.id}`;
+      a.dataset.category = p.category.join(',');
+      a.setAttribute('aria-label', title);
+      a.innerHTML = `
+        <div class="archive-entry__thumb">
+          <img src="../${p.heroImage}" alt="${title}" loading="lazy" width="600" height="450">
+        </div>
+        <div class="archive-entry__body">
+          <p class="archive-entry__meta">${[label, safeguardYear(p)].filter(Boolean).join(' · ')}</p>
+          <h2 class="archive-entry__title">${title}</h2>
+          ${instLine ? `<p class="archive-entry__inst">${instLine}</p>` : ''}
+          <p class="archive-entry__desc">${desc}</p>
+          <span class="archive-entry__cta">View project <span aria-hidden="true">→</span></span>
+        </div>
+      `;
+      return a;
+    }
+
+    async function init() {
+      const grid    = document.getElementById('archive-grid');
+      const countEl = document.getElementById('archive-count');
+      let projects  = [];
+
+      try {
+        const res = await fetch('../assets/data/projects.en.json', { cache: 'no-store' });
+        projects  = await res.json();
+      } catch(e) {
+        grid.innerHTML = '<p style="padding:60px;font-family:var(--f-sans);color:rgba(255,255,255,0.3);">The projects could not be loaded.</p>';
+        return;
+      }
+
+      projects.forEach(p => grid.appendChild(buildCard(p)));
+      countEl.textContent = `${projects.length} projects`;
+
+      // Filtering
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.dataset.filter;
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('is-active'));
+          btn.classList.add('is-active');
+
+          let n = 0;
+          document.querySelectorAll('.archive-entry').forEach(card => {
+            const show = filter === 'all' || card.dataset.category.split(',').includes(filter);
+            card.classList.toggle('is-hidden', !show);
+            if (show) n++;
+          });
+          countEl.textContent = `${n} project${n !== 1 ? 's' : ''}`;
+        });
+      });
+    }
+
+    init();
+  </script>
+
+  <script src="../assets/js/nav.js?v=1"></script>
+
+</body>
+</html>

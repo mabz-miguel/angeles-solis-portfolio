@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Project — Ángeles Solís Parra, Senior Cultural Heritage Conservator-Restorer">
+  <title>Project — Ángeles Solís Parra</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css?v=16">
+  <link rel="stylesheet" href="../assets/css/languages.css?v=1">
+  <script src="../assets/js/languages.js?v=1" defer></script>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="site-nav" role="banner">
+    <a class="site-nav__brand" href="index.html">Ángeles Solís Parra</a>
+    <div class="language-switch" role="group" aria-label="Language">
+      <a data-language="es" href="../project-detail.html" lang="es" hreflang="es" aria-label="Español">ES</a>
+      <span aria-hidden="true">/</span>
+      <a data-language="en" href="project-detail.html" lang="en" hreflang="en" aria-label="English" aria-current="true">EN</a>
+    </div>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav-menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav aria-label="Main navigation" id="site-nav-menu">
+      <ul role="list">
+        <li><a href="index.html?room=vaciados">Sculpture</a></li>
+        <li><a href="index.html?room=pintura">Painting</a></li>
+        <li><a href="index.html#about">Profile</a></li>
+        <li><a href="index.html#recognition">Recognition</a></li>
+        <li><a href="index.html#research">Research</a></li>
+        <li><a href="index.html#publications">Publications</a></li>
+        <li><a href="complete-archive.html" class="is-active">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="nav-backdrop"></div>
+
+  <!-- Loading state -->
+  <div class="detail-status" id="detail-status">
+    <p>Loading…</p>
+  </div>
+
+  <!-- Page content (hidden until JS populates) -->
+  <main id="detail-main" hidden>
+
+    <!-- HERO -->
+    <div class="detail-hero">
+      <img class="detail-hero__img" id="hero-img" src="" alt="">
+      <div class="detail-hero__gradient"></div>
+      <div class="detail-back">
+        <a href="complete-archive.html" class="js-back">← Back</a>
+      </div>
+      <div class="detail-hero__content">
+        <p class="detail-hero__eyebrow" id="hero-eyebrow"></p>
+        <h1 class="detail-hero__title" id="hero-title"></h1>
+      </div>
+    </div>
+
+    <!-- META BAR -->
+    <div class="detail-meta">
+      <div class="detail-meta__item">
+        <span class="detail-meta__label">Type</span>
+        <span class="detail-meta__value" id="meta-type"></span>
+      </div>
+      <div class="detail-meta__item">
+        <span class="detail-meta__label">Institution</span>
+        <span class="detail-meta__value" id="meta-institution"></span>
+      </div>
+      <div class="detail-meta__item">
+        <span class="detail-meta__label">Location</span>
+        <span class="detail-meta__value" id="meta-location"></span>
+      </div>
+      <div class="detail-meta__item">
+        <span class="detail-meta__label">Year</span>
+        <span class="detail-meta__value" id="meta-year"></span>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="detail-content">
+      <span class="detail-content__eyebrow">About this project</span>
+      <p class="detail-content__lead" id="content-lead"></p>
+      <p class="detail-content__text" id="content-text"></p>
+      <div id="content-cta" hidden></div>
+    </div>
+
+    <!-- SELECTED WORKS — renders only when project.works[] exists.
+         Stays hidden for every project without real works data, so
+         it never appears as an empty section. -->
+    <section class="detail-works" id="detail-works" hidden aria-label="Selected works">
+      <span class="detail-section-label">Selected Works</span>
+      <div class="detail-works__list" id="detail-works-list"></div>
+    </section>
+
+    <!-- GALLERY -->
+    <div class="detail-gallery" id="detail-gallery" hidden>
+      <span class="detail-section-label">Gallery</span>
+      <div class="detail-gallery__grid" id="gallery-grid"></div>
+    </div>
+
+    <!-- TAGS -->
+    <div class="detail-tags" id="detail-tags" aria-label="Project tags"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="detail-nav" aria-label="Project navigation">
+      <a href="complete-archive.html" class="detail-nav__btn js-back">← Complete Archive</a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="#" class="detail-nav__btn" id="nav-prev">← Previous</a>
+        <a href="#" class="detail-nav__btn detail-nav__btn--fill" id="nav-next">Next →</a>
+      </div>
+    </nav>
+
+  </main>
+
+
+  <script>
+    const CAT_LABELS = {
+      'sculpture': 'Sculpture',
+      'painting': 'Painting',
+      'archaeological-mural': 'Archaeology and Murals',
+      'institutional-collections': 'Institutional Collections',
+      'private-collections': 'Private Collections',
+      'research-methodology': 'Research and Methodology',
+      'awards-grants': 'Recognition'
+    };
+
+    // Europa Nostra date resolved 2026-09-02: the diploma (primary source)
+    // says 2005; the CV said 2006, confirmed to be a transcription error.
+    // Kept as a permanent guard so the retired "2006" figure can never
+    // resurface in rendered text. Legitimate project-duration ranges
+    // (e.g. 2001–2006, 2002–2007) never pass through this function —
+    // only title/shortDescription/longDescription do.
+    function safeguardEuropaNostra(text) {
+      if (!text) return text;
+      return text
+        .replace(/Premio Europa Nostra\s*\(?2006\)?/gi, 'Premio Europa Nostra 2005')
+        .replace(/Europa Nostra\s*\(?2006\)?/gi, 'Europa Nostra 2005')
+        .replace(/\s{2,}/g, ' ')
+        .trim();
+    }
+
+    function safeguardYear(p) {
+      return p.year;
+    }
+
+    async function init() {
+      const id        = new URLSearchParams(location.search).get('id');
+      const statusEl  = document.getElementById('detail-status');
+      const mainEl    = document.getElementById('detail-main');
+
+      let projects;
+      try {
+        projects = await fetch('../assets/data/projects.en.json', { cache: 'no-store' }).then(r => r.json());
+      } catch(e) {
+        statusEl.innerHTML = '<p>The project could not be loaded. <a href="complete-archive.html" style="color:var(--white);text-decoration:underline;">Back to the archive →</a></p>';
+        return;
+      }
+
+      const idx = projects.findIndex(p => p.id === id);
+      if (idx === -1) {
+        statusEl.innerHTML = '<p>Project not found. <a href="complete-archive.html" style="color:var(--white);text-decoration:underline;">Back to the archive →</a></p>';
+        return;
+      }
+
+      const p = projects[idx];
+      const title = safeguardEuropaNostra(p.title);
+      document.title = `${title} — Ángeles Solís Parra`;
+
+      // Hero
+      const img = document.getElementById('hero-img');
+      img.src = '../' + p.heroImage;
+      img.alt = title;
+      document.getElementById('hero-eyebrow').textContent = p.category.map(c => CAT_LABELS[c] || c).join(' · ');
+      document.getElementById('hero-title').textContent   = title;
+
+      // Meta
+      document.getElementById('meta-type').textContent        = p.type;
+      document.getElementById('meta-institution').textContent = p.institution;
+      document.getElementById('meta-location').textContent    = p.location;
+      document.getElementById('meta-year').textContent        = safeguardYear(p);
+      // Do not imply metadata that the source does not document.
+      ['meta-institution', 'meta-location', 'meta-year'].forEach(id => {
+        const value = document.getElementById(id);
+        value.parentElement.hidden = !value.textContent.trim();
+      });
+
+      // Content — lead (shortDescription) + body (longDescription),
+      // no repetition of the hero title.
+      document.getElementById('content-lead').textContent = safeguardEuropaNostra(p.shortDescription) || '';
+      const textEl = document.getElementById('content-text');
+      if (p.longDescription && p.longDescription !== p.shortDescription) {
+        textEl.textContent = safeguardEuropaNostra(p.longDescription);
+      } else {
+        textEl.remove();
+      }
+
+      // Anjusil® is a methodology with no fixed public pricing — route
+      // interest through the site's own Contact section instead of a
+      // commercial quote flow, reusing the same CTA already approved on
+      // Complete Archive.
+      if (p.id === 'anjusil-metodologia') {
+        const cta = document.getElementById('content-cta');
+        cta.innerHTML = `<a href="index.html#contact" class="btn-primary" style="margin-top:16px;">Request information or a quotation <span class="btn-arrow">→</span></a>`;
+        cta.removeAttribute('hidden');
+      }
+
+      // Selected Works — only shown once a project carries real
+      // works[] data (V2 model). Images grouped by their documented
+      // role (hero/before/during/process/after/detail); role labels
+      // are the schema's own field names, not invented captions.
+      const ROLE_LABELS = {
+        hero: 'Overview', before: 'Before', during: 'During',
+        process: 'Process', after: 'After', detail: 'Detail'
+      };
+      if (p.works && p.works.length) {
+        const worksSection = document.getElementById('detail-works');
+        const worksList     = document.getElementById('detail-works-list');
+        worksSection.removeAttribute('hidden');
+        p.works.forEach(w => {
+          const item = document.createElement('article');
+          item.className = 'detail-work';
+
+          const thumbs = Object.keys(ROLE_LABELS).flatMap(role => {
+            const val = w.images && w.images[role];
+            const srcs = Array.isArray(val) ? val : (val ? [val] : []);
+            return srcs.map(src => ({ src, role }));
+          });
+
+          item.innerHTML = `
+            <div class="detail-work__head">
+              <h3 class="detail-work__title">${w.title}</h3>
+              ${w.inventoryCode ? `<span class="detail-work__code">${w.inventoryCode}</span>` : ''}
+            </div>
+            <div class="detail-work__grid">
+              ${thumbs.map(t => `
+                <div class="detail-work__thumb">
+                  <img src="../${t.src}" alt="${w.title} — ${ROLE_LABELS[t.role]}" loading="lazy">
+                  <span class="detail-work__role">${ROLE_LABELS[t.role]}</span>
+                </div>`).join('')}
+            </div>
+          `;
+          worksList.appendChild(item);
+        });
+      }
+
+      // Gallery
+      if (p.gallery && p.gallery.length) {
+        const gallerySection = document.getElementById('detail-gallery');
+        const galleryGrid    = document.getElementById('gallery-grid');
+        gallerySection.removeAttribute('hidden');
+        p.gallery.forEach((src, i) => {
+          const div = document.createElement('div');
+          div.className = `detail-gallery__item${i === 0 ? ' is-wide' : ''}`;
+          const img2  = document.createElement('img');
+          img2.src    = '../' + src;
+          img2.alt    = `${p.title} — image ${i + 1}`;
+          img2.loading = 'lazy';
+          div.appendChild(img2);
+          galleryGrid.appendChild(div);
+        });
+      }
+
+      // Tags
+      const tagsEl = document.getElementById('detail-tags');
+      p.tags.forEach(tag => {
+        const s = document.createElement('span');
+        s.className = 'detail-tag';
+        s.textContent = tag;
+        tagsEl.appendChild(s);
+      });
+
+      // Prev / Next
+      const prevBtn = document.getElementById('nav-prev');
+      const nextBtn = document.getElementById('nav-next');
+
+      if (idx > 0) {
+        prevBtn.href = `project-detail.html?id=${projects[idx - 1].id}`;
+      } else {
+        prevBtn.classList.add('is-hidden');
+      }
+
+      if (idx < projects.length - 1) {
+        nextBtn.href = `project-detail.html?id=${projects[idx + 1].id}`;
+      } else {
+        nextBtn.classList.add('is-hidden');
+      }
+
+      // Show
+      statusEl.hidden = true;
+      mainEl.removeAttribute('hidden');
+    }
+
+    // Set back link destination based on ?from= param
+    (function () {
+      const from = new URLSearchParams(location.search).get('from');
+      let backHref  = 'complete-archive.html';
+      let backLabel = '← Complete Archive';
+      if (from === 'vaciados') { backHref = 'index.html?room=vaciados'; backLabel = '← Sculpture Gallery'; }
+      if (from === 'pintura')  { backHref = 'index.html?room=pintura';  backLabel = '← Painting Gallery';  }
+      document.querySelectorAll('.js-back').forEach(a => {
+        a.href        = backHref;
+        a.textContent = backLabel;
+      });
+    })();
+
+    init();
+  </script>
+
+  <script src="../assets/js/nav.js?v=1"></script>
+
+</body>
+</html>
